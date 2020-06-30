@@ -16,13 +16,13 @@ public class Teste {
 		Livro l2 = new Livro("Engenharia da Computacao", "Somerville", 3, 650);
 		Livro l3 = new Livro("Computacao em Nuvem", "Cezar", 1, 445);
 		
-		bib.insereEditora(e1); //livros/editoras criados e inseridos para facilitar o teste do professor
-		bib.insereEditora(e2); //livros/editoras criados e inseridos para facilitar o teste do professor
-		bib.insereEditora(e3); //livros/editoras criados e inseridos para facilitar o teste do professor
+		bib.insereEditora(e1);
+		bib.insereEditora(e2); 
+		bib.insereEditora(e3); 
 		
-		bib.insereLivro(l1); //livros/editoras criados e inseridos para facilitar o teste do professor
-		bib.insereLivro(l2); //livros/editoras criados e inseridos para facilitar o teste do professor
-		bib.insereLivro(l3); //livros/editoras criados e inseridos para facilitar o teste do professor
+		bib.insereLivro(l1); 
+		bib.insereLivro(l2); 
+		bib.insereLivro(l3); 
 						
 		boolean opcaoValida = true;	
 	
