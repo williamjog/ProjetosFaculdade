@@ -2,11 +2,11 @@ Exercício 1
 
 Nesta semana, o IBOPE vai ouvir entre 1500 e 2000 eleitores para saber as intenções de voto. Entretanto, o instituto precisa de um método para calcular os resultados. Assim sendo, crie a classe Candidato, que possui um nome, um partido e um inteiro que representa a quantidade de intenções de voto obtidas na pesquisa. Depois disto, crie uma classe chamada IBOPE. Nesta classe, crie um método chamado candidatoMaisBemColocado, que recebe um array unidimensional de Candidato e retorna o candidato (objeto do tipo Candidato) que está melhor colocado na pesquisa. Atente para o seguinte:
 
-o método candidatoMaisBemColocado deve ser recursivo.
+O método candidatoMaisBemColocado deve ser recursivo.
 
 Naturalmente, você deve criar a classe Candidato.
 
-No método recursivo, caso o array seja nulo, você deve lançar uma exceção do tipo ArrayNotPossibleException, que deve ser criada por você
+No método recursivo, caso o array seja nulo, você deve lançar uma exceção do tipo ArrayNotPossibleException, que deve ser criada por você.
 
 Exercício 2 
 
