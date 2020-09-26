@@ -8,12 +8,12 @@ O tipo de produto fica a seu critério. O importante é que exista uma classe ab
 
 O sistema deve ser capaz de:
 
-  • Cadastrar um novo produto;
-  • Listar os produtos já cadastrados;
-  • Remover um produto de acordo com alguma propriedade (por exemplo, nome ou código);
-  • Atualizar as informações de um produto existente;
-  • Vender um produto;
-  • Imprimir um relatório de vendas;
+  * Cadastrar um novo produto;
+  * Listar os produtos já cadastrados;
+  * Remover um produto de acordo com alguma propriedade (por exemplo, nome ou código);
+  * Atualizar as informações de um produto existente;
+  * Vender um produto;
+  * Imprimir um relatório de vendas;
 
 Os produtos armazenados na execução do sistema devem ser persistentes. Ou seja, quando o sistema for encerrado e aberto novamente, os itens cadastrados não podem ser perdidos. 
 Para garantir isso, você deverá utilizar arquivos para armazenar os produtos cadastrados.
