@@ -15,7 +15,14 @@ O sistema deve ser capaz de:
   * Vender um produto;
   * Imprimir um relatório de vendas;
 
-Os produtos armazenados na execução do sistema devem ser persistentes. Ou seja, quando o sistema for encerrado e aberto novamente, os itens cadastrados não podem ser perdidos. 
+Os produtos armazenados na execução do sistema devem ser persistentes. Ou seja, quando o sistema for encerrado e aberto novamente, os itens cadastrados não podem ser perdidos.
+
+
 Para garantir isso, você deverá utilizar arquivos para armazenar os produtos cadastrados.
+
+
 Você deve utilizar, no mínimo, uma exceção desenvolvida por você.
+
+
 Você deve, de alguma forma, utilizar um algoritmo de ordenação dentre os vistos em aula no seu sistema.
+
