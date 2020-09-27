@@ -29,7 +29,7 @@ public abstract class Produto {
 	}
 
 	public String getExtraInfo() {
-		return "infoExtra";
+		return "inter";
 	}
 	
 	public void setExtraInfo(String infoExtra) {

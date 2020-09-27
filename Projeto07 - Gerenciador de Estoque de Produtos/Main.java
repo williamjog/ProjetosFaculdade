@@ -21,7 +21,7 @@ public class Main {
 		while (validOption) {
 
 			try {
-				System.out.println("\nMENU:");
+				System.out.println("MENU:");
 				System.out.println("1 - Cadastrar um novo produto");
 				System.out.println("2 - Listar produtos cadastrados");
 				System.out.println("3 - Remover um produto");
@@ -87,6 +87,9 @@ public class Main {
 							Produto product = new Diversos(id, price, description, quantidadeEmEstoque,
 									quantidadeVendida, "Diversos", infoExtra);
 							estoque.AdicionaProduto(product, file);
+							
+						} else {
+							System.out.println("\nOpção inválida!\n");
 						}
 
 					} else if (option == 2) {
@@ -105,7 +108,14 @@ public class Main {
 						System.out.println("Campos Editáveis:");
 						System.out.println("[1 - Preço] - [2 - Descrição] - [3 - Quantidade] - [4 - Informação Extra]");
 						int campo = Integer.parseInt(sc.nextLine());
-
+						
+						if (campo < 1 || campo > 4) {
+							System.out.println("\nOpção inválida!\n");
+							System.out.println("Campos Editáveis:");
+							System.out.println("[1 - Preço] - [2 - Descrição] - [3 - Quantidade] - [4 - Informação Extra]");
+							campo = Integer.parseInt(sc.nextLine());
+						}
+				
 						System.out.println("Digite a nova informação:");
 						String novaInfo = sc.nextLine();
 						estoque.alteraInfoProduto(id, campo, novaInfo, file);

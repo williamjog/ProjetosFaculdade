@@ -20,16 +20,18 @@ public class Estoque {
 		double valorTotaldeVenda = produto.getQuantidadeVendida() * produto.getPreco();
 		String stringValorVenda = String.format("%.2f", valorTotaldeVenda);
 		return "\nProduto: " + produto.getDescricao() + "\n" + "Tipo: " + produto.getTipo() + "\n" + "Vendas: "
-				+ produto.getQuantidadeVendida() + "\n" + "Total de vendas deste produto em R$: " + stringValorVenda;
+				+ produto.getQuantidadeVendida() + "\n" + "Total de vendas deste produto em R$: " + stringValorVenda + "\n";
 	}
 
 	public void printSalesReport() {
 		System.out.printf("\nO somatório do valor em vendas atual é de R$ %.2f", valorVendido);
-		System.out.printf("\nO valor em estoque atualmente é de R$ %.2f\n", valorEmEstoque);
-		for (int i = 0; i < totProdutos; i++) {
-			if (arrayDeProdutos[i].getQuantidadeVendida() > 0) {
-				System.out.println("\nSegue relatório dos itens vendidos:");
-				System.out.println(printProdutReport(arrayDeProdutos[i]));
+		System.out.printf("\nO valor em estoque atualmente é de R$ %.2f\n\n", valorEmEstoque);
+		if (valorVendido > 0) {
+			System.out.println("Segue relatório dos itens vendidos:");
+			for (int i = 0; i < totProdutos; i++) {
+				if (arrayDeProdutos[i].getQuantidadeVendida() > 0) {
+					System.out.println(printProdutReport(arrayDeProdutos[i]));
+				}
 			}
 		}
 	}
@@ -72,15 +74,16 @@ public class Estoque {
 		} catch (NullPointerException e) {
 			System.out.println(e);
 		}
-		System.out.println("Venda Cadastrada!");
-		return;
+		System.out.println("\nVenda Cadastrada!\n");
 	}
 
 	public void ordenarEstoque(String fileName) {
+		
 		sortSelection(arrayDeProdutos);
 
 		try {
 			FileWriter fw = new FileWriter(fileName, false);
+			
 			for (int i = 0; i < totProdutos; i++) {
 				fw.write(arrayDeProdutos[i].writeProduct());
 			}
@@ -94,7 +97,7 @@ public class Estoque {
 		} catch (NullPointerException e) {
 			System.out.println(e);
 		}
-		System.out.println("Estoque ordenado!");
+		System.out.println("Estoque ordenado!\n");
 	}
 
 	private void sortSelection(Produto arr[]) { // Adaptado do site GeeksForGeeks: https://www.geeksforgeeks.org/selection-sort/
@@ -113,8 +116,9 @@ public class Estoque {
 		}
 	}
 
-	public boolean AdicionaProduto(Produto produto, String fileName) throws stockIsFullException {
+	public void AdicionaProduto(Produto produto, String fileName) throws stockIsFullException {
 		if (totProdutos < arrayDeProdutos.length) {
+			
 			arrayDeProdutos[totProdutos] = produto;
 			
 			try {
@@ -124,7 +128,7 @@ public class Estoque {
 
 				totProdutos++;
 				valorEmEstoque += produto.getPreco() * produto.getQuantidadeEmEstoque();
-				return true;
+				System.out.println("\nProduto cadastrado com sucesso! \n");
 
 			} catch (FileNotFoundException e) {
 				System.out.println("Arquivo \"" + fileName + "\" não existe.");
@@ -133,11 +137,21 @@ public class Estoque {
 			} catch (NullPointerException e) {
 				System.out.println(e);
 			}
+		} else {
+			throw new stockIsFullException();
 		}
-		throw new stockIsFullException();
+	}
+	
+	private void resetarArrayDeProdutos() {
+		for (int i = 0; i < totProdutos; i++) {
+			arrayDeProdutos[i] = null;
+		}
+		totProdutos = 0;
+		valorEmEstoque = 0;
+		valorVendido = 0;
 	}
 
-	public boolean removeProduto(int id, String fileName) {
+	public void removeProduto(int id, String fileName) {
 		boolean idOk = false;
 		for (int i = 0; i < totProdutos; i++) {
 			if (arrayDeProdutos[i].getId() == id) {
@@ -147,17 +161,15 @@ public class Estoque {
 		}
 
 		if (idOk) {
-			try {
-				FileReader fr = new FileReader(fileName);
-				BufferedReader in = new BufferedReader(fr);
+			try {				
 				FileWriter fw = new FileWriter(fileName, false);
-				for (int i = 0; i < totProdutos; i++) {
+				
+				for (int i = 0; i < totProdutos; i++) {					
 					if (arrayDeProdutos[i].getId() != id) {
 						fw.write(arrayDeProdutos[i].writeProduct());
 					}
 				}
-				fr.close();
-				in.close();
+				
 				fw.close();
 
 			} catch (FileNotFoundException e) {
@@ -169,32 +181,17 @@ public class Estoque {
 			resetarArrayDeProdutos();
 			preencheEstoque(fileName);
 
-			System.out.println("Produto com o ID " + id + " removido com sucesso! Verifique o estoque atual!");
-			return true;
+			System.out.println("\nProduto com o ID " + id + " removido com sucesso! Verifique o estoque atual!\n");
 
 		} else {
-			System.out.println("ID não encontrado.");
-			return false;
+			System.out.println("\nID não encontrado.\n");
 		}
-	}
-
-	private void resetarArrayDeProdutos() {
-		for (int i = 0; i < totProdutos; i++) {
-			arrayDeProdutos[i] = null;
-		}
-		totProdutos = 0;
-		valorEmEstoque = 0;
-		valorVendido = 0;
-		return;
 	}
 
 	public void alteraInfoProduto(int id, int campo, String novaInfo, String fileName) {
 
-		try {
-			FileReader fr = new FileReader(fileName);
-			BufferedReader in = new BufferedReader(fr);
+		try {		
 			FileWriter fw = new FileWriter(fileName, false);
-
 			String newField = whichField(campo);
 			for (int i = 0; i < totProdutos; i++) {
 				if (arrayDeProdutos[i].getId() == id) {
@@ -222,9 +219,7 @@ public class Estoque {
 					fw.write(arrayDeProdutos[i].writeProduct());
 				}
 			}
-
-			fr.close();
-			in.close();
+			
 			fw.close();
 
 		} catch (FileNotFoundException e) {
@@ -235,8 +230,10 @@ public class Estoque {
 
 		resetarArrayDeProdutos();
 		preencheEstoque(fileName);
+		
+		System.out.println("\nInformação alterada com sucesso!\n");
 	}
-
+	
 	private String whichField(int campo) {
 		String field = "";
 		switch (campo) {
@@ -291,7 +288,6 @@ public class Estoque {
 			FileReader fr = new FileReader(file);
 			BufferedReader in = new BufferedReader(fr);
 			String[] line = new String[6];
-			int i = 0;
 
 			String buffer = in.readLine();
 			while (buffer != null) {
@@ -308,28 +304,28 @@ public class Estoque {
 				switch (tipo) {
 
 				case "Alimento":
-					arrayDeProdutos[i] = new Alimento(id, preco, descricao, quantidadeEmEstoque, quantidadeVendida,
+					arrayDeProdutos[totProdutos] = new Alimento(id, preco, descricao, quantidadeEmEstoque, quantidadeVendida,
 							tipo, infoExtra);
 					totProdutos++;
 					valorEmEstoque += preco * quantidadeEmEstoque;
 					valorVendido += preco * quantidadeVendida;
 					break;
 				case "Textil":
-					arrayDeProdutos[i] = new Textil(id, preco, descricao, quantidadeEmEstoque, quantidadeVendida, tipo,
+					arrayDeProdutos[totProdutos] = new Textil(id, preco, descricao, quantidadeEmEstoque, quantidadeVendida, tipo,
 							infoExtra);
 					totProdutos++;
 					valorEmEstoque += preco * quantidadeEmEstoque;
 					valorVendido += preco * quantidadeVendida;
 					break;
 				case "Eletronico":
-					arrayDeProdutos[i] = new Eletronico(id, preco, descricao, quantidadeEmEstoque, quantidadeVendida,
+					arrayDeProdutos[totProdutos] = new Eletronico(id, preco, descricao, quantidadeEmEstoque, quantidadeVendida,
 							tipo, infoExtra);
 					totProdutos++;
 					valorEmEstoque += preco * quantidadeEmEstoque;
 					valorVendido += preco * quantidadeVendida;
 					break;
 				case "Diversos":
-					arrayDeProdutos[i] = new Diversos(id, preco, descricao, quantidadeEmEstoque, quantidadeVendida,
+					arrayDeProdutos[totProdutos] = new Diversos(id, preco, descricao, quantidadeEmEstoque, quantidadeVendida,
 							tipo, infoExtra);
 					totProdutos++;
 					valorEmEstoque += preco * quantidadeEmEstoque;
@@ -339,7 +335,6 @@ public class Estoque {
 					break;
 				}
 
-				i++;
 				buffer = in.readLine();
 			}
 
