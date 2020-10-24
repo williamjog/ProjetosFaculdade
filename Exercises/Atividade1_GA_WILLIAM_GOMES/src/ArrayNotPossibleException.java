@@ -5,8 +5,4 @@ public class ArrayNotPossibleException extends Exception {
 	public ArrayNotPossibleException() {
 		super("Array nulo!");
 	}
-	
-	public ArrayNotPossibleException(String msg) {
-		super(msg);
-	}	
 }

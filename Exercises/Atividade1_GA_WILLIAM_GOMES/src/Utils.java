@@ -61,7 +61,6 @@ public class Utils {
 				survey.adicionaCandidato(new Candidato(generateRandomName(), generateRandomParty(), (surveySize - sumOfVotes)));
 			}
 		}
-		
 		return survey;	
 	}
 }

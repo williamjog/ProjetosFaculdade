@@ -24,8 +24,8 @@ public class IBOPE {
 		if (position > totCandidatos - 1) {
 			return winningPosition;
 		} else {
-			winningPosition = (array[position].getQtdIntencoesDeVoto() > array[winningPosition].getQtdIntencoesDeVoto()) 
-					? winningPosition = position : winningPosition;
+			winningPosition = (array[position].getQtdIntencoesDeVoto() > array[winningPosition].getQtdIntencoesDeVoto()) ?
+					 winningPosition = position : winningPosition;
 			return getPositionOfWinningCandidate(array, position + 1, winningPosition);
 		}
 	}

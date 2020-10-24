@@ -9,7 +9,7 @@ public class PrincipalIBOPE {
 		System.out.println("Total de Votos: " + ibope.sumOfVotes()); // Comparando o numero de eleitores e votos
 		System.out.println("Total de Eleitores: " + ibope.getEleitores()); // Comparando o numero de eleitores e votos
 		System.out.println("Total de Candidatos: " + ibope.getTotCandidatos() + "\n");
-		
+				
 		try {
 			System.out.println("O Candidato mais bem colocado da pesquisa IBOPE " + ibope.getIdDaPesquisa() + " foi: ");
 			System.out.println(ibope.candidatoMaisBemColocado());
