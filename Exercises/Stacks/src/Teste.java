@@ -239,7 +239,7 @@ public class Teste {
 		p17.push(20);
 		p17.push(25);
 		p17.push(30);
-		System.out.println(p17.contains(25)); // ENCONTRA
+		System.out.println(p17.contains(30)); // ENCONTRA
 		System.out.println(p17.contains(31) + "\n"); // NAO EXISTE
 		
 		System.out.println("----Exercicio 13----");
@@ -281,7 +281,6 @@ public class Teste {
 		System.out.println(p20.equals(p21) + "\n"); // Diferente
 		
 		System.out.println("----Exercicio 16----");
-		
 		StaticStack<Integer> p22 = new StaticStack<Integer>(4);
 		System.out.println(p21 + "\n");
 		p22 = p21.clone(p21);

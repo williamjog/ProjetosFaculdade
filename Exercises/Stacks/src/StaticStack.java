@@ -255,7 +255,7 @@ public class StaticStack<E> implements Stack<E> {
 			return false;
 		}
 		for (int i = 0; i < this.numElements(); i++) {
-			if (s1.elements[i] != this.elements[i]) {
+			if (!s1.elements[i].toString().equals(this.elements[i].toString())) {
 				return false;
 			}
 		}
