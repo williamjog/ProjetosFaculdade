@@ -1,4 +1,5 @@
 public class Ingresso {
+	
 	protected String nomeDaPessoa;
 	protected String localizacaoNoEstadio;
 	protected String tipo;

@@ -4,4 +4,6 @@ Carlos; vip; idoso;
 Júlia; vip; normal;
 Cláudia; arquibancada; idoso;
 Marcos; arquibandada; infantil;
-William; vip; normal
+William; arquibancada; idoso;
+Lucia; vip; normal;
+Henrique; pista; normal;

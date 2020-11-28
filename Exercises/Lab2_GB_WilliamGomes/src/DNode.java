@@ -1,4 +1,5 @@
 public class DNode {
+	
 	protected Ingresso element;
 	protected DNode prev;
 	protected DNode next;
@@ -12,7 +13,7 @@ public class DNode {
 		return element; 
 	}
 
-	public DNode  getPrevious() { 
+	public DNode getPrevious() { 
 		return prev;
 	}
 

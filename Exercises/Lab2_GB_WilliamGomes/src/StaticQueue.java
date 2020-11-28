@@ -6,7 +6,7 @@ public class StaticQueue implements Queue {
 
 	protected int first;
 	protected int last;
-	protected Ingresso elements[];
+	protected Ingresso[] elements;
 
 	public StaticQueue(int maxSize) {
 		elements = new Ingresso[maxSize];
@@ -40,7 +40,6 @@ public class StaticQueue implements Queue {
 				last = (last + 1) % elements.length;
 			elements[last] = element;
 		}
-
 	}
 
 	public Ingresso dequeue() throws UnderflowException {

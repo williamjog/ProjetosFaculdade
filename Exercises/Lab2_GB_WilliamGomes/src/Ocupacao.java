@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -26,9 +29,9 @@ public class Ocupacao implements List {
 	
 	public void insertFirst(Ingresso element) {
 		DNode newNode = new DNode(element);
-		if (isEmpty())
+		if (isEmpty()) {			
 			head = tail = newNode;
-		else {
+		} else {
 			newNode.setNext(head);
 			head.setPrevious(newNode);
 			head = newNode;
@@ -84,14 +87,15 @@ public class Ocupacao implements List {
 		if (pos < 0  ||  pos > numElements)
 			throw new IndexOutOfBoundsException();
 		
-		if (pos == 0)
+		if (pos == 0) {			
 			insertFirst(element);
-		else if (pos == numElements)
+		} else if (pos == numElements) {			
 			insertLast(element);
-		else { 
+		} else { 
 			DNode prev = head;
-			for (int i = 0; i < pos-1; i++)
+			for (int i = 0; i < pos - 1; i++) {				
 				prev = prev.getNext();
+			}
 
 			DNode newNode = new DNode(element);
 			newNode.setPrevious(prev);
@@ -156,6 +160,30 @@ public class Ocupacao implements List {
 		return s;
 	}
 	
+	public void lerArquivoDeClientes(String file) {
+		try { // Verifica se existe um arquivo chamado clientes.txt, senão lança uma exceção.
+			FileReader fr = new FileReader(file);
+			BufferedReader in = new BufferedReader(fr);
+			String buffer = in.readLine();
+			String[] line = new String[3];
+			while (buffer != null && !buffer.equals("")) {
+				line = buffer.split(";");
+				String nomeDaPessoa = line[0].trim();
+				String localizacaoNoEstadio = line[1].trim();
+				String tipo = line[2].trim();
+				Ingresso ingressoDaFila = new Ingresso(nomeDaPessoa, localizacaoNoEstadio, tipo);
+				this.vendeIngresso(ingressoDaFila);
+				buffer = in.readLine();
+			}
+			in.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println("Arquivo \\" + file + "\\ nao existe!");
+		} catch (IOException e) {
+			System.out.println("Erro na leitura do arquivo " + file);
+		}
+	}
+	
 	public void vendeIngresso(Ingresso ingresso) {
 		this.insertLast(ingresso);
 	}
@@ -164,14 +192,15 @@ public class Ocupacao implements List {
 		StaticQueue fila = new StaticQueue(this.numElements);
 		DNode ingresso = this.head;
 		for (int i = 0; i < this.numElements; i++) {
-			if (ingresso.getElement().getTipo().equals("idoso")) {
+			if (ingresso.getElement().getTipo().equalsIgnoreCase("idoso")) {
 				fila.enqueue(ingresso.getElement());
 			}
 			ingresso = ingresso.getNext();
 		}
 		ingresso = this.head;
 		for (int i = 0; i < this.numElements; i++) {
-			if (ingresso.getElement().getTipo().equals("normal")) {
+			if (ingresso.getElement().getTipo().equalsIgnoreCase("normal") || 
+				ingresso.getElement().getTipo().equalsIgnoreCase("estudante")) {
 				fila.enqueue(ingresso.getElement());
 			}
 			ingresso = ingresso.getNext();
@@ -181,7 +210,7 @@ public class Ocupacao implements List {
 	
 	public void salvarClientes(String filename, int position) {
 		DNode ingresso = this.head;
-		for (int i = 1; i <= position; i++) {
+		for (int i = 0; i < position; i++) {
 			ingresso = ingresso.getNext();
 		}
 		if (ingresso == null) {
@@ -197,7 +226,7 @@ public class Ocupacao implements List {
 			}
 			fw.write(ingresso.getElement().getNomeDaPessoa() + "; " +
 				     ingresso.getElement().getLocalizacaoNoEstadio() + "; " +
-					 ingresso.getElement().getTipo() + "\n");
+					 ingresso.getElement().getTipo() + ";" + "\n");
 			fw.close();
 			
 		} catch (IOException e) {
