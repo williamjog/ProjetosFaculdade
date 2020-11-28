@@ -1,0 +1,7 @@
+João; pista; normal;
+Maria; pista; infantil;
+Carlos; vip; idoso;
+Júlia; vip; normal;
+Cláudia; arquibancada; idoso;
+Marcos; arquibandada; infantil;
+William; vip; normal

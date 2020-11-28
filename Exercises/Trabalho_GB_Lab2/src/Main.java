@@ -11,7 +11,7 @@ public class Main {
 
 		boolean validOption = true;
 
-		String file = "C:\\Users\\willi\\Desktop\\Schedule.txt";
+		String file = "Schedule.txt";
 		
 		Schedule schedule = new Schedule();
 		
