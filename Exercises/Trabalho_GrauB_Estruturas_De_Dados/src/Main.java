@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class Main {
 	
-	// Desenvolvido por William Gomes e Iohanna
+	// Desenvolvido por William Gomes
 
 	public static void main(String[] args) {
 		
-		String file = "C:\\Users\\willi\\Desktop\\pessoas.txt"; // No meu PC deixei na ·rea de trabalho.
+		String file = "C:\\Users\\willi\\Desktop\\pessoas.txt"; // No meu PC deixei na √°rea de trabalho.
 		
 		ArvoreAVL arvore = new ArvoreAVL();
 		
@@ -22,7 +22,7 @@ public class Main {
 			boolean opcaoMenu = true;
 			
 			while(opcaoMenu) {
-				System.out.println("DIGITE A OP«√O ESCOLHIDA:");
+				System.out.println("DIGITE A OP√á√ÉO ESCOLHIDA:");
 				System.out.println("1 - [Consultar CPF] \n2 - [Consultar pessoas pelo nome]\n3 - [Consultar pessoas por Data de Nascimento]\n4 - [Sair]");
 				
 				try {
@@ -38,7 +38,7 @@ public class Main {
 						if (pessoaProcurada != null) {
 							System.out.println("\n" + pessoaProcurada.getChave());
 						} else {
-							System.out.println("CPF n„o encontrado!\n");
+							System.out.println("CPF n√£o encontrado!\n");
 						}
 						break;
 					
@@ -58,11 +58,10 @@ public class Main {
 						System.out.println("\nDigite a data final: ");
 						String segundaData = sc.nextLine();
 						
-						SimpleDateFormat data1 = new SimpleDateFormat("dd/MM/yyyy");
-						SimpleDateFormat data2 = new SimpleDateFormat("dd/MM/yyyy");
+						SimpleDateFormat modeloDeData = new SimpleDateFormat("dd/MM/yyyy");
 						
-						Date dataInicial = data1.parse(primeiraData);
-						Date dataFinal = data2.parse(segundaData);
+						Date dataInicial = modeloDeData.parse(primeiraData);
+						Date dataFinal = modeloDeData.parse(segundaData);
 						
 						System.out.println("\n[\n");
 						arvore.procurarPessoasPelaDataDeNascimento(dataInicial,dataFinal);
