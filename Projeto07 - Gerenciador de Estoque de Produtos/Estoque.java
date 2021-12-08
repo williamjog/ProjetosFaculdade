@@ -10,7 +10,7 @@ public class Estoque {
 	private int totProdutos;
 
 	public Estoque() {
-		arrayDeProdutos = new Produto[10];
+		arrayDeProdutos = new Produto[100];
 		totProdutos = 0;
 		valorEmEstoque = 0;
 		valorVendido = 0;
@@ -24,10 +24,10 @@ public class Estoque {
 	}
 
 	public void printSalesReport() {
-		System.out.printf("\nO somatÛrio do valor em vendas atual È de R$ %.2f", valorVendido);
-		System.out.printf("\nO valor em estoque atualmente È de R$ %.2f\n\n", valorEmEstoque);
+		System.out.printf("\nO somat√≥rio do valor em vendas atual √© de R$ %.2f", valorVendido);
+		System.out.printf("\nO valor em estoque atualmente √© de R$ %.2f\n\n", valorEmEstoque);
 		if (valorVendido > 0) {
-			System.out.println("Segue relatÛrio dos itens vendidos:");
+			System.out.println("Segue relat√≥rio dos itens vendidos:");
 			for (int i = 0; i < totProdutos; i++) {
 				if (arrayDeProdutos[i].getQuantidadeVendida() > 0) {
 					System.out.println(printProdutReport(arrayDeProdutos[i]));
@@ -68,7 +68,7 @@ public class Estoque {
 			fw.close();
 
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo \"" + filepath + "\" n„o existe.");
+			System.out.println("Arquivo \"" + filepath + "\" n√£o existe.");
 		} catch (IOException e) {
 			System.out.println("Erro na leitura de " + filepath + ".");
 		} catch (NullPointerException e) {
@@ -91,7 +91,7 @@ public class Estoque {
 			fw.close();
 
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo \"" + fileName + "\" n„o existe.");
+			System.out.println("Arquivo \"" + fileName + "\" n√£o existe.");
 		} catch (IOException e) {
 			System.out.println("Erro na leitura de " + fileName + ".");
 		} catch (NullPointerException e) {
@@ -102,9 +102,9 @@ public class Estoque {
 
 	private void sortSelection(Produto arr[]) { // Adaptado do site GeeksForGeeks: https://www.geeksforgeeks.org/selection-sort/
 		int n = totProdutos;
-		// Limite de movimento um a um em relaÁ„o ao array n„o ordenado
+		// Limite de movimento um a um em rela√ß√£o ao array n√£o ordenado
 		for (int i = 0; i < n - 1; i++) {
-			// Encontra o elemento com valor mÌnimo no array n„o ordenado
+			// Encontra o elemento com valor m√≠nimo no array n√£o ordenado
 			int min_idx = i;
 			for (int j = i + 1; j < n; j++)
 				if (arr[j].getId() < arr[min_idx].getId())
@@ -131,7 +131,7 @@ public class Estoque {
 				System.out.println("\nProduto cadastrado com sucesso! \n");
 
 			} catch (FileNotFoundException e) {
-				System.out.println("Arquivo \"" + fileName + "\" n„o existe.");
+				System.out.println("Arquivo \"" + fileName + "\" n√£o existe.");
 			} catch (IOException e) {
 				System.out.println("Erro na leitura de " + fileName + ".");
 			} catch (NullPointerException e) {
@@ -184,7 +184,7 @@ public class Estoque {
 			System.out.println("\nProduto com o ID " + id + " removido com sucesso! Verifique o estoque atual!\n");
 
 		} else {
-			System.out.println("\nID n„o encontrado.\n");
+			System.out.println("\nID n√£o encontrado.\n");
 		}
 	}
 
@@ -231,7 +231,7 @@ public class Estoque {
 		resetarArrayDeProdutos();
 		preencheEstoque(fileName);
 		
-		System.out.println("\nInformaÁ„o alterada com sucesso!\n");
+		System.out.println("\nInforma√ß√£o alterada com sucesso!\n");
 	}
 	
 	private String whichField(int campo) {
@@ -342,11 +342,11 @@ public class Estoque {
 			in.close();
 
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo \"" + file + "\" n„o existe.");
+			System.out.println("Arquivo \"" + file + "\" n√£o existe.");
 		} catch (IOException e) {
 			System.out.println("Erro na leitura de " + file + ".");
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("PosiÁ„o do Array ultrapassou o tamanho m·ximo!");
+			System.out.println("Posi√ß√£o do Array ultrapassou o tamanho m√°ximo!");
 		}
 	}
 
